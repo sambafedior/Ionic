@@ -1,0 +1,41 @@
+<!--
+  Generated template for the TodoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="danger">
+    <button ion-button menuToggle> 
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>TODO Liste</ion-title>
+  </ion-navbar>
+
+  <ion-segment color="danger" [(ngModel)]="filter" padding-top padding-horizontal>
+    <ion-segment-button *ngFor="let allowedFilter of allowedFilters" [value]="allowedFilter">{{ allowedFilter }}</ion-segment-button> 
+  </ion-segment>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list no-lines>
+    <ion-item-sliding *ngFor="let item of filterTodo(); let pos=index">
+      <ion-item>
+        <ion-label (click)="goToForm(item, pos)">{{item.title}}</ion-label>
+        <ion-toggle [(ngModel)]="item.done" (ionChange)="persistTask()" ></ion-toggle>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="danger" (click)="removeItem(pos)"> <ion-icon name="trash"></ion-icon> Suprr</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer padding>
+  <button ion-button block color="danger" (click)="goToForm(null, -1)">Nouvelle Tâche</button>
+</ion-footer>

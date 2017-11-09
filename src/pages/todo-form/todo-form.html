@@ -1,0 +1,41 @@
+<!--
+  Generated template for the TodoFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="danger">
+    <ion-title>TODO Formulaire</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<div class="row"  >
+  <ion-list>
+    
+    <ion-item>
+      <ion-label floating>Tâche
+      </ion-label>
+      <ion-input [(ngModel)]="task.title"></ion-input>
+    </ion-item>
+        
+     <ion-item>
+      <button ion-button block (click)="saveTask()">Valider</button>
+    </ion-item>
+
+    <ion-item>
+        <button ion-button block (click)="takePicture()" >Prendre une photo <ion-icon name="camera"></ion-icon></button>
+      </ion-item>
+        
+      <ion-item *ngIf="task.imageData">
+          <ion-img src= "data:image/jpeg;base64,{{task.imageData}}" ></ion-img>
+      </ion-item>
+
+  </ion-list>
+</div>
+ 
+</ion-content>
